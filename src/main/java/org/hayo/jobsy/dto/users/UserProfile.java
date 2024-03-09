@@ -15,12 +15,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserProfile {
-    private Long id;
+    private String id;
     private String name;
     private String headline;
     private String email;
     private String phone;
-    private String jobStatus;
     private String openToWork;
     private String resumeUrl;
     private String githubUrl;

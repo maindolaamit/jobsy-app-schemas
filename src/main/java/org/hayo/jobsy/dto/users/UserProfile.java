@@ -24,7 +24,8 @@ public class UserProfile {
     private String resumeUrl;
     private String githubUrl;
     private String googleUrl;
-    private Address address;
+//    private Address address;
+    private String location;
     private String currentPosition;
     private List<String> skills;
     private List<Education> educations;

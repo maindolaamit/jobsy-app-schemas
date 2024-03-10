@@ -24,6 +24,7 @@ public class JobPost {
     @Size(min = 10, max = 1000, message = "About job must be between 10 and 1000 characters")
     private String aboutJob;
     @NotNull(message = "Company id is required")
+    @NotBlank(message = "Company id is required")
     private String companyId;
     private String location;
     private String skills;

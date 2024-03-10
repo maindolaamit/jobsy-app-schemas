@@ -1,9 +1,6 @@
 package org.hayo.jobsy.dto.registration;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,15 +11,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterUserRequest {
-    @NotNull
+    @NotNull(message = "Name is required")
     @NotBlank(message = "Name is required")
-    @Min(5)
+    @Size(min = 5, message = "Name must be at least 5 characters")
     private String name;
-    @NotNull
+    @NotNull(message = "Email is required")
     @NotBlank(message = "Email is required")
     @Email
     private String email;
-    @NotNull
+    @NotNull(message = "Password is required")
     @NotBlank(message = "Password is required")
     private String password;
     private String githubUrl;

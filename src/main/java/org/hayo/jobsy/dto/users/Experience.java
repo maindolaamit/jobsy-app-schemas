@@ -1,10 +1,12 @@
 package org.hayo.jobsy.dto.users;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hayo.jobsy.dto.Address;
 
 import java.time.LocalDate;
 
@@ -13,10 +15,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Experience {
+    @NotNull(message = "Company name is required")
+    @NotBlank(message = "Company name is required")
     private String company;
+    @NotNull(message = "Title is required")
+    @NotBlank(message = "Title is required")
+    @Size(min = 3, message = "Title too short")
     private String title;
     private String description;
-    private Address location;
+    private String location;
     private String type;
     private LocalDate fromYear;
     private LocalDate toYear;

@@ -1,12 +1,11 @@
 package org.hayo.jobsy.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
-@Getter
+@Data
 @AllArgsConstructor
 @Builder
+@NoArgsConstructor
 public class ApiErrorCauses {
     private String type;
     private String detail;

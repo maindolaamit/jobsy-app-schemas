@@ -1,9 +1,8 @@
-package org.hayo.jobsy.dto.registration;
+package org.hayo.jobsy.dto.company;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,25 +12,25 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegisterCompanyRequest {
-    @NotBlank
-    @Size(min = 5, message = "Name must be at least 5 characters")
+public class CreateCompanyRequest {
+    private String id;
+    @NotBlank(message = "Company name is required")
+    @NotNull(message = "Company name is required")
     private String name;
     @NotBlank(message = "Company Registration Number is required")
     @NotNull(message = "Company Registration Number is required")
     private String registrationNumber;
-    @NotNull
+    private String description;
     @NotBlank(message = "Email is required")
+    @NotNull(message = "Email is required")
     @Email
     private String companyEmail;
-    @NotNull
-    @NotBlank(message = "Password is required")
-    private String password;
-    @NotNull
-    @NotBlank(message = "Phone is required")
+    private String companyWebsiteUrl;
+    private String companyHeadline;
+    private String companyDescription;
     private String companyPhoneNumber;
-    @NotNull
-    @NotBlank(message = "Industry is required")
-    private String industry;
+    private String companyImageLogoUrl;
     private String location;
+    private String industry;
+    private String companySize;
 }

@@ -1,23 +1,44 @@
 package org.hayo.jobsy.models.exceptions;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.hayo.jobsy.dto.response.ApiErrorSchema;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.http.HttpStatus;
 
 import java.util.Optional;
 
 @EqualsAndHashCode(callSuper = true)
 @Getter
-@Builder
-@AllArgsConstructor
-public class ApiConnectionError extends RuntimeException {
+public class ApiConnectionError extends AbstractWebExceptions {
 
-    private final HttpStatusCode httpStatusCode;
+    private final ApiErrorSchema apiErrorSchema;
 
-    private final String message;
+    public ApiConnectionError(String reason, HttpStatus httpStatus, String apiResponseError) {
+        super(reason, httpStatus);
+        ApiErrorSchema apiErrorSchema1;
 
-    private final Optional<ApiErrorSchema> apiErrorSchema;
+        // change the value of apiErrorSchema to the new value
+        if (apiResponseError == null) {
+            apiErrorSchema1 = ApiErrorSchema.builder()
+                    .detail(Optional.ofNullable(reason).orElse("Connection Error"))
+                    .type(httpStatus.getReasonPhrase())
+                    .causes(null)
+                    .build();
+        } else {
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                apiErrorSchema1 = objectMapper.readValue(apiResponseError, ApiErrorSchema.class);
+            } catch (Exception e) {
+                apiErrorSchema1 = ApiErrorSchema.builder()
+                        .detail(Optional.of(apiResponseError).orElse("Connection Error"))
+                        .type(httpStatus.getReasonPhrase())
+                        .causes(null)
+                        .build();
+            }
+        }
+        this.apiErrorSchema = apiErrorSchema1;
+    }
+
+
 }

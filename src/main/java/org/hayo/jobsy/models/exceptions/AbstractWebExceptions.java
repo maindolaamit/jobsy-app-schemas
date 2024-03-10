@@ -2,6 +2,7 @@ package org.hayo.jobsy.models.exceptions;
 
 import org.springframework.http.HttpStatus;
 
+
 public abstract class AbstractWebExceptions extends RuntimeException implements WebExceptions {
     private final String reason;
     private final HttpStatus status;

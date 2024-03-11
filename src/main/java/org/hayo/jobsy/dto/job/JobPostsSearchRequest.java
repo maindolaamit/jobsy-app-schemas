@@ -17,5 +17,4 @@ public class JobPostsSearchRequest {
     String jobType;
     String location;
     String jobStatus;
-    String userId;
 }

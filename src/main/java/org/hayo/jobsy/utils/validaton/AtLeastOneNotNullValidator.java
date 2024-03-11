@@ -10,11 +10,11 @@ public class AtLeastOneNotNullValidator implements ConstraintValidator<AtLeastOn
         if (request == null) return false;
 
         if (request.getCompanyId() == null && request.getJobTitle() == null
-                && request.getLocation() == null && request.getUserId() == null) {
+                && request.getLocation() == null && request.getJobType() == null) {
             return false;
         }
 
-        return request.getUserId().isBlank() || request.getCompanyId().isBlank()
+        return request.getJobType().isBlank() || request.getCompanyId().isBlank()
                 || !request.getJobTitle().isBlank() || request.getLocation().isBlank();
     }
 }

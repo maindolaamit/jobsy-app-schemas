@@ -18,8 +18,8 @@ public class JobPostApplication {
     private String userId;
     @NotNull(message = "Company id is required")
     private String companyId;
-    private String status;
     private String resumeUrl;
+    private String applicationStatus;
     private String applicationDate;
     private String applicationStatusBy;
     private String applicationStatusReason;

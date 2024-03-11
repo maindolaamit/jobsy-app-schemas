@@ -1,5 +1,6 @@
 package org.hayo.jobsy.dto.job;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,10 +13,9 @@ import org.hayo.jobsy.utils.validaton.AtLeastOneNotNull;
 @NoArgsConstructor
 @AtLeastOneNotNull
 public class JobPostApplicationsSearchRequest {
-    String companyId;
-    String userId;
-    String jobTitle;
-    String jobType;
-    String location;
-    String jobStatus;
+    private String jobPostId;
+    private String userId;
+    private String companyId;
+    private String status;
+    private String applicationDate;
 }
